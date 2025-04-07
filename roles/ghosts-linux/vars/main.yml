@@ -2,6 +2,5 @@
 # vars file for roles/ghosts-linux
 client_path: "ghosts-linux.tar.gz"
 dotnet_path: "aspnetcore-runtime-8.0.14-linux-x64.tar.gz"
-client_target_path: "/root/ghosts"
-dotnet_target_path: "/root/dotnet"
-dotnet_sh_path: "/etc/profile.d/dotnet.sh"
+client_target_path: "/opt/ghosts"
+dotnet_target_path: "/opt/dotnet"
