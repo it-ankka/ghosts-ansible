@@ -1,0 +1,12 @@
+linux_workstations:
+  hosts:
+    debian-ws01:
+      ansible_host: 192.168.122.8
+  vars:
+    ansible_user: root
+
+
+windows_workstations:
+  hosts:
+    win10-ws01:
+      ansible_host: 192.168.122.172
