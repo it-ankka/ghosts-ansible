@@ -1,0 +1,5 @@
+- name: Install Ghosts client on linux workstations
+  hosts: linux_workstations
+  user: root
+  roles:
+    - ghosts-linux

@@ -1,0 +1,7 @@
+---
+# handlers file for roles/samba
+- name: Restart Samba
+  systemd_service:
+    name: smbd
+    state: restarted
+

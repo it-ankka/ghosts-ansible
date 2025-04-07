@@ -1,0 +1,43 @@
+---
+# tasks file for roles/ghosts-linux
+- name: Create folder for client
+  file:
+    path: "{{ client_target_path }}"
+    state: directory
+
+- name: Copy the client
+  unarchive:
+    src: ghosts-linux.tar.gz 
+    dest: "{{ client_target_path }}"
+    creates: "{{ client_target_path }}/config"
+
+- name: Create folder for Dotnet
+  file:
+    path: "{{ dotnet_target_path }}"
+    state: directory
+
+- name: Unarchive the runtime
+  unarchive:
+    src: aspnetcore-runtime-8.0.14-linux-x64.tar.gz
+    dest: "{{ dotnet_target_path }}"
+    creates: "{{ dotnet_target_path }}/dotnet"
+
+- name: Add Dotnet to path
+  copy:
+    dest: "{{ dotnet_sh_path }}"
+    content: "[ -z \"$DOTNET_ROOT\" ] && export DOTNET_ROOT={{ dotnet_target_path }}"
+
+- name: Source the file to update $PATH
+  shell: ". {{ dotnet_sh_path }}"
+
+- name: Create a Ghosts service file
+  copy:
+    src: ghosts.service
+    dest: "/etc/systemd/system/ghosts.service"
+
+- name: Enable the Ghosts client service
+  systemd_service:
+    name: ghosts
+    state: started
+    enabled: true
+

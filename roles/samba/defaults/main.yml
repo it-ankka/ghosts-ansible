@@ -1,0 +1,4 @@
+---
+# defaults file for roles/samba
+share_path: /srv/samba/share
+workgroup: WORKGROUP

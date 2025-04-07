@@ -1,0 +1,5 @@
+- name: Setup simple Samba share on machine
+  hosts: samba
+  user: root
+  roles:
+    - samba

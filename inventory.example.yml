@@ -1,14 +1,14 @@
 ungrouped:
   hosts:
     samba:
-      ansible_host: 192.168.124.90
+      ansible_host: 192.168.1.90
 
 linux_workstations:
   hosts:
     debian-ws01:
-      ansible_host: 192.168.124.1
+      ansible_host: 192.168.1.1
 
 windows_workstations:
   hosts:
     win10-ws01:
-      ansible_host: 192.168.124.2
+      ansible_host: 192.168.1.2

@@ -1,0 +1,15 @@
+[Unit]
+Description=GHOSTS Client Service
+After=network.target
+
+[Service]
+ExecStart={{ dotnet_target_path }}/dotnet {{ client_target_path }}/ghosts.client.linux.dll
+WorkingDirectory={{ client_target_path }}
+Restart=always
+User=ghosts_user
+Group=ghosts_user
+Environment=DOTNET_CLI_TELEMETRY_OPTOUT=1
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=multi-user.target
