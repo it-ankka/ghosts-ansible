@@ -5,16 +5,22 @@
       name: samba
       state: present
 
+- name: Create directory for share
+  file:
+    path: "{{ share_path }}"
+    mode: "0777"
+    state: directory
+    recurse: true
+
 - name: Copy Samba configuration
   template:
     src: smb.conf
     dest: /etc/samba/smb.conf
-
-- name: Start samba
-  systemd_service:
-    name: smbd
-    state: started
-    enabled: true
   notify:
     - Restart Samba
 
+- name: Start samba
+  service:
+    name: smbd
+    state: started
+    enabled: true
